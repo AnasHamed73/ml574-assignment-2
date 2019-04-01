@@ -2,6 +2,7 @@ import numpy as np
 from scipy.optimize import minimize
 from scipy.io import loadmat
 from math import sqrt
+from math import exp
 
 
 def initializeWeights(n_in, n_out):
@@ -25,7 +26,7 @@ def sigmoid(z):
     """# Notice that z can be a scalar, a vector or a matrix
     # return the sigmoid of input z"""
 
-    return  # your code here
+    return 1/(1+exp(-z))  # your code here
 
 
 def preprocess():
@@ -115,14 +116,13 @@ def nnObjFunction(params, *args):
     #
     #
 
-
-
-    # Make sure you reshape the gradient matrices to a 1D array. for instance if your gradient matrices are grad_w1 and grad_w2
+    # Make sure you reshape the gradient matrices to a 1D array.
+    # for instance if your gradient matrices are grad_w1 and grad_w2
     # you would use code similar to the one below to create a flat array
     # obj_grad = np.concatenate((grad_w1.flatten(), grad_w2.flatten()),0)
     obj_grad = np.array([])
 
-    return (obj_val, obj_grad)
+    return obj_val, obj_grad
 
 
 def nnPredict(w1, w2, data):
