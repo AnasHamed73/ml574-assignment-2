@@ -43,14 +43,11 @@ num_channels = 1
 # Number of classes, one class for each of 10 digits.
 num_classes = 10
 
-
 def new_weights(shape):
     return tf.Variable(tf.truncated_normal(shape, stddev=0.05))
 
-
 def new_biases(length):
     return tf.Variable(tf.constant(0.05, shape=[length]))
-
 
 def new_conv_layer(input,              # The previous layer.
                    num_input_channels, # Num. channels in prev. layer.
@@ -110,7 +107,6 @@ def new_conv_layer(input,              # The previous layer.
     # because we will plot the weights later.
     return layer, weights
 
-
 def flatten_layer(layer):
     # Get the shape of the input layer.
     layer_shape = layer.get_shape()
@@ -135,7 +131,6 @@ def flatten_layer(layer):
     # Return both the flattened layer and the number of features.
     return layer_flat, num_features
 
-
 def new_fc_layer(input,          # The previous layer.
                  num_inputs,     # Num. inputs from prev. layer.
                  num_outputs,    # Num. outputs.
@@ -154,7 +149,6 @@ def new_fc_layer(input,          # The previous layer.
         layer = tf.nn.relu(layer)
 
     return layer
-
 
 x = tf.placeholder(tf.float32, shape=[None, img_size_flat], name='x')
 x_image = tf.reshape(x, [-1, img_size, img_size, num_channels])
@@ -210,7 +204,6 @@ train_batch_size = 64
 # Counter for total number of iterations performed so far.
 total_iterations = 0
 
-
 def optimize(num_iterations):
     # Ensure we update the global variable rather than a local copy.
     global total_iterations
@@ -259,10 +252,8 @@ def optimize(num_iterations):
     # Print the time-usage.
     print("Time usage: " + str(timedelta(seconds=int(round(time_dif)))))
 
-
 # Split the test-set into smaller batches of this size.
 test_batch_size = 256
-
 
 def plot_images(images, cls_true, cls_pred=None):
     assert len(images) == len(cls_true) == 9
@@ -292,7 +283,6 @@ def plot_images(images, cls_true, cls_pred=None):
     # in a single Notebook cell.
     plt.show()
 
-
 def plot_example_errors(cls_pred, correct):
     # This function is called from print_test_accuracy() below.
 
@@ -319,8 +309,7 @@ def plot_example_errors(cls_pred, correct):
     plot_images(images=images[0:9],
                 cls_true=cls_true[0:9],
                 cls_pred=cls_pred[0:9])
-
-
+    
 def plot_confusion_matrix(cls_pred):
     # This is called from print_test_accuracy() below.
 
@@ -351,7 +340,6 @@ def plot_confusion_matrix(cls_pred):
     # Ensure the plot is shown correctly with multiple plots
     # in a single Notebook cell.
     plt.show()
-
 
 def print_test_accuracy(show_example_errors=False,
                         show_confusion_matrix=False):
@@ -418,7 +406,6 @@ def print_test_accuracy(show_example_errors=False,
     if show_confusion_matrix:
         print("Confusion Matrix:")
         plot_confusion_matrix(cls_pred=cls_pred)
-
 
 print_test_accuracy()
 optimize(num_iterations=1)

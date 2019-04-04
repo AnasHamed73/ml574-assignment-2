@@ -2,7 +2,6 @@ import numpy as np
 from scipy.optimize import minimize
 from scipy.io import loadmat
 from math import sqrt
-from math import exp
 
 
 def initializeWeights(n_in, n_out):
@@ -25,8 +24,8 @@ def initializeWeights(n_in, n_out):
 def sigmoid(z):
     """# Notice that z can be a scalar, a vector or a matrix
     # return the sigmoid of input z"""
-
-    return 1/(1+exp(-z))  # your code here
+    activition = 1/(1+np.exp(-1*z))
+    return activition # your code here
 
 
 def preprocess():
@@ -57,10 +56,138 @@ def preprocess():
     # Your code here.
     
 
-    # Feature selection
-    # Your code here.
+
 
     print('preprocess done')
+    test0 = mat.get('test0')
+    test1 = mat.get('test1')
+    test2 = mat.get('test2')
+    test3 = mat.get('test3')
+    test4 = mat.get('test4')
+    test5 = mat.get('test5')
+    test6 = mat.get('test6')
+    test7 = mat.get('test7')
+    test8 = mat.get('test8')
+    test9 = mat.get('test9')
+
+
+    test0_label = np.zeros((len(test0)))
+    test1_label = np.ones((len(test1)))
+    test2_label = np.ones((len(test2)))
+    test2_label.fill(2)
+    test3_label = np.ones((len(test3)))
+    test3_label.fill(3)
+    test4_label = np.ones((len(test4)))
+    test4_label.fill(4)
+    test5_label = np.ones((len(test5)))
+    test5_label.fill(5)
+    test6_label = np.ones((len(test6)))
+
+    test6_label.fill(6)
+    test7_label = np.ones((len(test7)))
+    test7_label.fill(7)
+    test8_label = np.ones((len(test8)))
+    test8_label.fill(8)
+    test9_label = np.ones((len(test9)))
+    test9_label.fill(9)
+
+    test0 = np.column_stack((test0, test0_label))
+    test1 = np.column_stack((test1, test1_label))
+    test2 = np.column_stack((test2, test2_label))
+    test3 = np.column_stack((test3, test3_label))
+    test4 = np.column_stack((test4, test4_label))
+    test5 = np.column_stack((test5, test5_label))
+    test6 = np.column_stack((test6, test6_label))
+    test7 = np.column_stack((test7, test7_label))
+    test8 = np.column_stack((test8, test8_label))
+    test9 = np.column_stack((test9, test9_label))
+
+    test = np.array(np.vstack((test0,test1,test2,test3,test4,test5,test6,test7,test8,test9)))
+
+    test_new = test
+    test_data = test_new[:,0:784]
+    test_label = test_new[:,784]
+    np.true_divide(test,255.0)
+    #print(mat)
+
+    train0 = mat.get('train0')
+    train1 = mat.get('train1')
+    train2 = mat.get('train2')
+    train3 = mat.get('train3')
+    train4 = mat.get('train4')
+    train5 = mat.get('train5')
+    train6 = mat.get('train6')
+    train7 = mat.get('train7')
+    train8 = mat.get('train8')
+    train9 = mat.get('train9')
+    train0_label = np.zeros((len(train0)))
+    train1_label = np.ones((len(train1)))
+    train2_label = np.ones((len(train2)))
+    train2_label.fill(2)
+    train3_label = np.ones((len(train3)))
+    train3_label.fill(3)
+    train4_label = np.ones((len(train4)))
+    train4_label.fill(4)
+    train5_label = np.ones((len(train5)))
+    train5_label.fill(5)
+    train6_label = np.ones((len(train6)))
+    train6_label.fill(6)
+    train7_label = np.ones((len(train7)))
+    train7_label.fill(7)
+    train9_label = np.ones((len(train9)))
+    train9_label.fill(9)
+    train8_label = np.ones((len(train8)))
+    train8_label.fill(8)
+
+    train0 = np.column_stack((train0, train0_label))
+    train1 = np.column_stack((train1, train1_label))
+    train2 = np.column_stack((train2, train2_label))
+    train3 = np.column_stack((train3, train3_label))
+    train4 = np.column_stack((train4, train4_label))
+    train5 = np.column_stack((train5, train5_label))
+    train6 = np.column_stack((train6, train6_label))
+    train7 = np.column_stack((train7, train7_label))
+    train8 = np.column_stack((train8, train8_label))
+    train9 = np.column_stack((train9, train9_label))
+    train = np.array(np.vstack((train0, train1, train2, train3, train4, train5, train6, train7, train8, train9)))
+
+
+    np.random.shuffle(train)
+
+
+
+    train_new = train[0:50000,:]
+    train_label = train_new[:, 784]
+    train_data = train_new[:, 0:784]
+
+
+    validation_new = train[50000:60000,:]
+    validation_data = validation_new[:,0:784]
+    validation_label = validation_new[:,784]
+
+    np.true_divide(test_data, 255.0)
+    np.true_divide(validation_data,255.0)
+
+
+    # Feature selection
+    # Your code here.
+    all_number = np.vstack((train_data, test_dat,validation_data))
+    feature_reducation = np.all(all_number == all_number[0,:], axis = 0)
+    all_number = all_number[:,~feature_reducation]
+    train_data = all_number[0:len(train_data),:]
+    test_data = all_number[len(train_data):len(train_data)+len(test_data),:]
+    validation_data = all_number[len(train_data)+len(test_data):len(train_data)+len(test_data)+len(validation_data),:]
+
+
+
+
+
+
+
+
+
+
+
 
     return train_data, train_label, validation_data, validation_label, test_data, test_label
 
@@ -116,13 +243,14 @@ def nnObjFunction(params, *args):
     #
     #
 
-    # Make sure you reshape the gradient matrices to a 1D array.
-    # for instance if your gradient matrices are grad_w1 and grad_w2
+
+
+    # Make sure you reshape the gradient matrices to a 1D array. for instance if your gradient matrices are grad_w1 and grad_w2
     # you would use code similar to the one below to create a flat array
     # obj_grad = np.concatenate((grad_w1.flatten(), grad_w2.flatten()),0)
     obj_grad = np.array([])
 
-    return obj_val, obj_grad
+    return (obj_val, obj_grad)
 
 
 def nnPredict(w1, w2, data):
