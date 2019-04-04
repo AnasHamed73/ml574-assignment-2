@@ -171,7 +171,7 @@ def preprocess():
 
     # Feature selection
     # Your code here.
-    all_number = np.vstack((train_data, test_dat,validation_data))
+    all_number = np.vstack((train_data, test_data,validation_data))
     feature_reducation = np.all(all_number == all_number[0,:], axis = 0)
     all_number = all_number[:,~feature_reducation]
     train_data = all_number[0:len(train_data),:]
