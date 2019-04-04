@@ -5,7 +5,9 @@ Comparing single layer MLP with deep MLP (using TensorFlow)
 import numpy as np
 import pickle
 from math import sqrt
+from math import exp
 from scipy import optimize
+
 
 # Do not change this
 def initializeWeights(n_in,n_out):
@@ -26,7 +28,7 @@ def initializeWeights(n_in,n_out):
 
 # Replace this with your sigmoid implementation
 def sigmoid(z):
-   pass
+    return 1/(1+exp(-z))  # your code here
 
 
 # Replace this with your nnObjFunction implementation
@@ -36,7 +38,9 @@ def nnObjFunction(params, *args):
     
 # Replace this with your nnPredict implementation
 def nnPredict(w1,w2,data):
-    pass
+    print("Data shape: ", data.shape)
+    print("w1 shape: ", w1.shape)
+    print("w2 shape: ", w2.shape)
 
 
 # Do not change this
@@ -74,9 +78,9 @@ lambdaval = 10;
 args = (n_input, n_hidden, n_class, train_data, train_label, lambdaval)
 
 #Train Neural Network using fmin_cg or minimize from scipy,optimize module. Check documentation for a working example
-opts = {'maxiter' :50}    # Preferred value.
+opts = {'maxiter': 50}    # Preferred value.
 
-nn_params = optimize.minimize(nnObjFunction, initialWeights, jac=True, args=args,method='CG', options=opts)
+nn_params = optimize.minimize(nnObjFunction, initialWeights, jac=True, args=args, method='CG', options=opts)
 params = nn_params.get('x')
 #Reshape nnParams from 1D vector into w1 and w2 matrices
 w1 = params[0:n_hidden * (n_input + 1)].reshape( (n_hidden, (n_input + 1)))

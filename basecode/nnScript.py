@@ -138,12 +138,23 @@ def nnPredict(w1, w2, data):
     %     layer to unit j in hidden layer.
     % data: matrix of data. Each row of this matrix represents the feature 
     %       vector of a particular image
-       
+
     % Output: 
     % label: a column vector of predicted labels"""
 
     labels = np.array([])
     # Your code here
+    # print("Data shape: ", data.shape)
+    # print("w1 shape: ", w1.shape)
+    # print("w2 shape: ", w2.shape)
+    
+    ones_input = np.ones((np.shape(data)[0], 1))
+    data = np.concatenate([ones_input, data], axis=1)
+    a = sigmoid(np.dot(data, np.transpose(w1)))
+
+    ones_hidden = np.ones((np.shape(a)[0], 1))
+    a = np.concatenate([ones_hidden, a], axis=1)
+    labels = sigmoid(np.dot(a, np.transpose(w2)))
 
     return labels
 
