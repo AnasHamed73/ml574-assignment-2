@@ -182,7 +182,7 @@ def preprocess():
     last_row = np.sum(all_number[:,-1])
     while last_row == 0:
         all_number = np.delete(all_number,-1,1)
-        last_row == np.sum(all_number[:,-1])
+        last_row = np.sum(all_number[:,-1])
 
 
 
