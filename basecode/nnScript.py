@@ -172,8 +172,20 @@ def preprocess():
     # Feature selection
     # Your code here.
     all_number = np.vstack((train_data, test_data,validation_data))
-    feature_reducation = np.all(all_number == all_number[0,:], axis = 0)
-    all_number = all_number[:,~feature_reducation]
+
+
+    first_row = np.sum(all_number[:,0])
+    while first_row == 0:
+        all_number = np.delete(all_number,0,1)
+        first_row = np.sum(all_number[:, 0])
+
+    last_row = np.sum(all_number[:,-1])
+    while last_row == 0:
+        all_number = np.delete(all_number,-1,1)
+        last_row == np.sum(all_number[:,-1])
+
+
+
     train_data = all_number[0:len(train_data),:]
     test_data = all_number[len(train_data):len(train_data)+len(test_data),:]
     validation_data = all_number[len(train_data)+len(test_data):len(train_data)+len(test_data)+len(validation_data),:]
