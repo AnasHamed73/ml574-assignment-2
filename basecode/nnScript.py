@@ -182,7 +182,7 @@ def preprocess():
     last_row = np.sum(all_number[:,-1])
     while last_row == 0:
         all_number = np.delete(all_number,-1,1)
-        last_row == np.sum(all_number[:,-1])
+        last_row = np.sum(all_number[:,-1])
 
 
 
@@ -334,7 +334,15 @@ def nnPredict(w1, w2, data):
     a = np.concatenate([ones_hidden, a], axis=1)
     labels = sigmoid(np.dot(a, np.transpose(w2)))
 
-    return labels
+    preds = np.zeros((np.shape(data)[0], 1))
+    for i in range(np.shape(data)[0]):
+        max = 0
+        for j in range(np.shape(labels)[1]):
+            if labels[i][j] > labels[i][max]:
+                max = j
+        preds[i] = max
+
+    return preds
 
 
 """**************Neural Network Script Starts here********************************"""
