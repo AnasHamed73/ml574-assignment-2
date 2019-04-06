@@ -249,9 +249,10 @@ def nnObjFunction(params, *args):
         label_matrix.append([0 if x != label else 1 for x in range(10)])
     label_matrix = np.array(label_matrix)
 
+
     w1 = params[0:n_hidden * (n_input + 1)].reshape((n_hidden, (n_input + 1)))
     w2 = params[(n_hidden * (n_input + 1)):].reshape((n_class, (n_hidden + 1)))
-      obj_val = 0
+    obj_val = 0
     
     # Feedforward Propagation
     bias_1 = np.ones((training_data.shape[0],1))
@@ -264,26 +265,28 @@ def nnObjFunction(params, *args):
     #obj_val
     n = training_data.shape[0]
     k = Feedforward_output.shape[1]
-    print(training_label.shape)
     
-    J_sum = 0
-    for i in range(n-1):
-        for l in range(k-1):
-            J_sum= J_sum + (np.dot(training_label[i],np.log(Feedforward_output[i][l]))+np.dot((1-training_label[i]),np.log(1-Feedforward_output[i][l])))
-    J_w1_w2 = np.dot(np.dot(-1,1/n),J_sum)
+    
+    ff = (np.log(Feedforward_output)).T
+    gg = (np.log(1 - Feedforward_output)).T
+    J_sum = np.array(-(np.dot(label_matrix, ff) + np.dot((1 - label_matrix), gg)))
+    diagonal = np.zeros((np.shape(J_sum)[0], 1))
+    for i in range(np.shape(J_sum)[0]):
+        diagonal[i][0] = J_sum[i][i]
+    J_w1_w2 = np.mean(diagonal, axis=0)
+
     regularization_term = np.dot(lambdaval,(np.dot(w1.flatten(),w1.flatten().T)+np.dot(w2.flatten(),w2.flatten().T)))
-    obj_val = J_w1_w2 + regularization_term/np.dot(2,training_data.shape[0])
+    obj_val = J_w1_w2.flatten() + regularization_term/np.dot(2,training_data.shape[0])
 
     #Backpropagation
-    delta_l = np.array(Feedforward_output) - np.array(label_matrix)
+    delta_l = np.array(label_matrix - Feedforward_output)
     derivative_lj = -1*np.dot(delta_l.T, hidden_output_with_bias)
     gradient_w2 = (derivative_lj + np.dot(lambdaval, w2))/training_data.shape[0]
     w2_without_bias = w2[:,0:-1]
-    delta_j = np.dot(np.array(1-hidden_output), (np.array(hidden_output).T))
-    product = np.dot(np.array(delta_j), np.array(np.dot(delta_l, w2_without_bias)))
-    derivative_ji = -1 * np.dot(product.T, training_data_with_bias)
+    delta_j = np.array(hidden_output)*np.array(1-hidden_output)
+    derivative_ji = -1*np.dot((np.array(delta_j)*np.array(np.dot(delta_l,w2_without_bias))).T,training_data_with_bias)
     gradient_w1 = (derivative_ji+np.dot(lambdaval,w1))/training_data.shape[0]
-
+    
     #Reshape the gradient to a 1D array
     gradient_w1_reshape = np.ndarray.flatten(gradient_w1.reshape((gradient_w1.shape[0]*gradient_w1.shape[1],1)))
     gradient_w2_reshape = gradient_w2.flatten()
@@ -291,12 +294,11 @@ def nnObjFunction(params, *args):
     obj_grad = np.ndarray.flatten(obj_grad_temp)
     
     
-    
-    
     # Make sure you reshape the gradient matrices to a 1D array. for instance if your gradient matrices are grad_w1 and grad_w2
     # you would use code similar to the one below to create a flat array
     # obj_grad = np.concatenate((grad_w1.flatten(), grad_w2.flatten()),0)
     #obj_grad = np.array([])
+    #print(obj_val, obj_grad)
     
     return (obj_val, obj_grad)
 
