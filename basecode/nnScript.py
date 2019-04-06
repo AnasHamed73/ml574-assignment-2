@@ -251,7 +251,7 @@ def nnObjFunction(params, *args):
 
     w1 = params[0:n_hidden * (n_input + 1)].reshape((n_hidden, (n_input + 1)))
     w2 = params[(n_hidden * (n_input + 1)):].reshape((n_class, (n_hidden + 1)))
-      obj_val = 0
+    obj_val = 0
     
     # Feedforward Propagation
     bias_1 = np.ones((training_data.shape[0],1))
@@ -332,7 +332,15 @@ def nnPredict(w1, w2, data):
     a = np.concatenate([ones_hidden, a], axis=1)
     labels = sigmoid(np.dot(a, np.transpose(w2)))
 
-    return labels
+    preds = np.zeros((np.shape(data)[0], 1))
+    for i in range(np.shape(data)[0]):
+        max = 0
+        for j in range(np.shape(labels)[1]):
+            if labels[i][j] > labels[i][max]:
+                max = j
+        preds[i] = max
+
+    return preds
 
 
 """**************Neural Network Script Starts here********************************"""

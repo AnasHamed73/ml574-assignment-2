@@ -17,6 +17,8 @@ def create_multilayer_perceptron():
     n_input = 2376  # data input
     n_classes = 2
 
+
+
     # Store layers weight & bias
     weights = {
         'h1': tf.Variable(tf.random_normal([n_input, n_hidden_1])),
