@@ -54,11 +54,7 @@ def preprocess():
 
     # Split the training sets into two sets of 50000 randomly sampled training examples and 10000 validation examples. 
     # Your code here.
-    
 
-
-
-    print('preprocess done')
     test0 = mat.get('test0')
     test1 = mat.get('test1')
     test2 = mat.get('test2')
@@ -154,12 +150,9 @@ def preprocess():
 
     np.random.shuffle(train)
 
-
-
     train_new = train[0:50000,:]
     train_label = train_new[:, 784]
     train_data = train_new[:, 0:784]
-
 
     validation_new = train[50000:60000,:]
     validation_data = validation_new[:,0:784]
@@ -173,7 +166,6 @@ def preprocess():
     # Your code here.
     all_number = np.vstack((train_data, test_data,validation_data))
 
-
     first_row = np.sum(all_number[:,0])
     while first_row == 0:
         all_number = np.delete(all_number,0,1)
@@ -184,22 +176,11 @@ def preprocess():
         all_number = np.delete(all_number,-1,1)
         last_row = np.sum(all_number[:,-1])
 
-
-
     train_data = all_number[0:len(train_data),:]
     test_data = all_number[len(train_data):len(train_data)+len(test_data),:]
     validation_data = all_number[len(train_data)+len(test_data):len(train_data)+len(test_data)+len(validation_data),:]
 
-
-
-
-
-
-
-
-
-
-
+    print('preprocess done')
 
     return train_data, train_label, validation_data, validation_label, test_data, test_label
 
@@ -207,7 +188,7 @@ def preprocess():
 def nnObjFunction(params, *args):
     """% nnObjFunction computes the value of objective function (negative log 
     %   likelihood error function with regularization) given the parameters 
-    %   of Neural Networks, thetraining data, their corresponding training 
+    %   of Neural Networks, the training data, their corresponding training
     %   labels and lambda - regularization hyper-parameter.
 
     % Input:
