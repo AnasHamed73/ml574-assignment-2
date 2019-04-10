@@ -38,7 +38,7 @@ def nnObjFunction(params, *args):
     
     label_matrix = []
     for label in training_label:
-        label_matrix.append([0 if x != label else 1 for x in range(10)])
+        label_matrix.append([0 if x != label else 1 for x in range(2)])
     label_matrix = np.array(label_matrix)
 
 
