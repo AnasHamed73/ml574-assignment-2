@@ -1,0 +1,9 @@
+nnScript.py:27: RuntimeWarning: overflow encountered in exp
+  activition = 1/(1+np.exp(-1*z))
+preprocess done
+
+ Training set Accuracy:9.8255362%
+
+ Validation set Accuracy:9.910592%
+
+ Test set Accuracy:9.778923%

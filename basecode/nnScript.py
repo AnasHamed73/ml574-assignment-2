@@ -54,11 +54,7 @@ def preprocess():
 
     # Split the training sets into two sets of 50000 randomly sampled training examples and 10000 validation examples. 
     # Your code here.
-    
 
-
-
-    print('preprocess done')
     test0 = mat.get('test0')
     test1 = mat.get('test1')
     test2 = mat.get('test2')
@@ -154,12 +150,9 @@ def preprocess():
 
     np.random.shuffle(train)
 
-
-
     train_new = train[0:50000,:]
     train_label = train_new[:, 784]
     train_data = train_new[:, 0:784]
-
 
     validation_new = train[50000:60000,:]
     validation_data = validation_new[:,0:784]
@@ -173,7 +166,6 @@ def preprocess():
     # Your code here.
     all_number = np.vstack((train_data, test_data,validation_data))
 
-
     first_row = np.sum(all_number[:,0])
     while first_row == 0:
         all_number = np.delete(all_number,0,1)
@@ -184,22 +176,11 @@ def preprocess():
         all_number = np.delete(all_number,-1,1)
         last_row = np.sum(all_number[:,-1])
 
-
-
     train_data = all_number[0:len(train_data),:]
     test_data = all_number[len(train_data):len(train_data)+len(test_data),:]
     validation_data = all_number[len(train_data)+len(test_data):len(train_data)+len(test_data)+len(validation_data),:]
 
-
-
-
-
-
-
-
-
-
-
+    print('preprocess done')
 
     return train_data, train_label, validation_data, validation_label, test_data, test_label
 
@@ -207,7 +188,7 @@ def preprocess():
 def nnObjFunction(params, *args):
     """% nnObjFunction computes the value of objective function (negative log 
     %   likelihood error function with regularization) given the parameters 
-    %   of Neural Networks, thetraining data, their corresponding training 
+    %   of Neural Networks, the training data, their corresponding training
     %   labels and lambda - regularization hyper-parameter.
 
     % Input:
@@ -243,12 +224,11 @@ def nnObjFunction(params, *args):
     %     layer to unit i in output layer."""
 
     n_input, n_hidden, n_class, training_data, training_label, lambdaval = args
-    
+
     label_matrix = []
     for label in training_label:
         label_matrix.append([0 if x != label else 1 for x in range(10)])
     label_matrix = np.array(label_matrix)
-
 
     w1 = params[0:n_hidden * (n_input + 1)].reshape((n_hidden, (n_input + 1)))
     w2 = params[(n_hidden * (n_input + 1)):].reshape((n_class, (n_hidden + 1)))
@@ -258,29 +238,34 @@ def nnObjFunction(params, *args):
     bias_1 = np.ones((training_data.shape[0],1))
     training_data_with_bias = np.concatenate((training_data, bias_1), axis=1)
     hidden_output = sigmoid(np.dot(training_data_with_bias,w1.T))
+
     bias_2 = np.ones((1,hidden_output.T.shape[1]))
     hidden_output_with_bias = np.concatenate((hidden_output.T,bias_2), axis=0).T
     Feedforward_output = sigmoid(np.dot(hidden_output_with_bias,w2.T))
     
     #obj_val
     
-    
     ff = (np.log(Feedforward_output)).T
     gg = (np.log(1 - Feedforward_output)).T
     J_sum = np.array(-(np.dot(label_matrix, ff) + np.dot((1 - label_matrix), gg)))
+
     diagonal = np.zeros((np.shape(J_sum)[0], 1))
     for i in range(np.shape(J_sum)[0]):
         diagonal[i][0] = J_sum[i][i]
     J_w1_w2 = np.mean(diagonal, axis=0)
 
-    regularization_term = np.dot(lambdaval,(np.dot(w1.flatten(),w1.flatten().T)+np.dot(w2.flatten(),w2.flatten().T)))
-    obj_val = J_w1_w2.flatten() + regularization_term/np.dot(2,training_data.shape[0])
+    w1_squared = np.dot(w1.flatten(), w1.flatten().T)
+    w2_squared = np.dot(w2.flatten(), w2.flatten().T)
+    regularization_term = np.dot(lambdaval, (w1_squared + w2_squared))
+    obj_val = J_w1_w2.flatten() + regularization_term/np.dot(2, training_data.shape[0])
 
     #Backpropagation
     delta_l = np.array(label_matrix - Feedforward_output)
     derivative_lj = -1*np.dot(delta_l.T, hidden_output_with_bias)
     gradient_w2 = (derivative_lj + np.dot(lambdaval, w2))/training_data.shape[0]
+
     w2_without_bias = w2[:,0:-1]
+
     delta_j = np.array(hidden_output)*np.array(1-hidden_output)
     derivative_ji = -1*np.dot((np.array(delta_j)*np.array(np.dot(delta_l,w2_without_bias))).T,training_data_with_bias)
     gradient_w1 = (derivative_ji+np.dot(lambdaval,w1))/training_data.shape[0]
@@ -395,7 +380,7 @@ print('\n Training set Accuracy:' + str(100 * np.mean((predicted_label == train_
 
 predicted_label = nnPredict(w1, w2, validation_data)
 
-# find the accuracy on Validation Dataset
+ find the accuracy on Validation Dataset
 
 print('\n Validation set Accuracy:' + str(100 * np.mean((predicted_label == validation_label).astype(float))) + '%')
 
