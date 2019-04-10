@@ -263,8 +263,6 @@ def nnObjFunction(params, *args):
     Feedforward_output = sigmoid(np.dot(hidden_output_with_bias,w2.T))
     
     #obj_val
-    n = training_data.shape[0]
-    k = Feedforward_output.shape[1]
     
     
     ff = (np.log(Feedforward_output)).T
