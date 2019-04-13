@@ -1,0 +1,650 @@
+Training...
+Done Ttraining
+~~~~~~~~~~~ hidden nodes  =  4 , lambda =  0 ~~~~~~~~~~~
+Training time:  48.19051718711853  seconds
+
+ Training set Accuracy:78.734%
+
+ Validation set Accuracy:77.83%
+
+ Test set Accuracy:79.46%
+Training...
+Done Ttraining
+~~~~~~~~~~~ hidden nodes  =  4 , lambda =  5 ~~~~~~~~~~~
+Training time:  56.37201237678528  seconds
+
+ Training set Accuracy:57.12%
+
+ Validation set Accuracy:57.06%
+
+ Test set Accuracy:56.94%
+Training...
+Done Ttraining
+~~~~~~~~~~~ hidden nodes  =  4 , lambda =  10 ~~~~~~~~~~~
+Training time:  46.935017347335815  seconds
+
+ Training set Accuracy:51.372%
+
+ Validation set Accuracy:51.21%
+
+ Test set Accuracy:51.89%
+Training...
+Done Ttraining
+~~~~~~~~~~~ hidden nodes  =  4 , lambda =  15 ~~~~~~~~~~~
+Training time:  41.761465072631836  seconds
+
+ Training set Accuracy:80.04%
+
+ Validation set Accuracy:79.22%
+
+ Test set Accuracy:80.8%
+Training...
+Done Ttraining
+~~~~~~~~~~~ hidden nodes  =  4 , lambda =  20 ~~~~~~~~~~~
+Training time:  42.05501365661621  seconds
+
+ Training set Accuracy:76.54%
+
+ Validation set Accuracy:75.91%
+
+ Test set Accuracy:76.59%
+Training...
+Done Ttraining
+~~~~~~~~~~~ hidden nodes  =  4 , lambda =  25 ~~~~~~~~~~~
+Training time:  45.52156400680542  seconds
+
+ Training set Accuracy:67.874%
+
+ Validation set Accuracy:67.71%
+
+ Test set Accuracy:67.6%
+Training...
+Done Ttraining
+~~~~~~~~~~~ hidden nodes  =  4 , lambda =  30 ~~~~~~~~~~~
+Training time:  44.878493785858154  seconds
+
+ Training set Accuracy:79.106%
+
+ Validation set Accuracy:77.97%
+
+ Test set Accuracy:79.83%
+Training...
+Done Ttraining
+~~~~~~~~~~~ hidden nodes  =  4 , lambda =  35 ~~~~~~~~~~~
+Training time:  42.11000990867615  seconds
+
+ Training set Accuracy:63.078%
+
+ Validation set Accuracy:62.66%
+
+ Test set Accuracy:62.69%
+Training...
+Done Ttraining
+~~~~~~~~~~~ hidden nodes  =  4 , lambda =  40 ~~~~~~~~~~~
+Training time:  45.21024799346924  seconds
+
+ Training set Accuracy:68.72%
+
+ Validation set Accuracy:68.08%
+
+ Test set Accuracy:69.1%
+Training...
+Done Ttraining
+~~~~~~~~~~~ hidden nodes  =  4 , lambda =  45 ~~~~~~~~~~~
+Training time:  46.651039838790894  seconds
+
+ Training set Accuracy:67.69%
+
+ Validation set Accuracy:67.07%
+
+ Test set Accuracy:67.83%
+Training...
+Done Ttraining
+~~~~~~~~~~~ hidden nodes  =  4 , lambda =  50 ~~~~~~~~~~~
+Training time:  45.264145851135254  seconds
+
+ Training set Accuracy:74.148%
+
+ Validation set Accuracy:73.0%
+
+ Test set Accuracy:74.14%
+Training...
+Done Ttraining
+~~~~~~~~~~~ hidden nodes  =  4 , lambda =  55 ~~~~~~~~~~~
+Training time:  41.548895597457886  seconds
+
+ Training set Accuracy:72.648%
+
+ Validation set Accuracy:71.89%
+
+ Test set Accuracy:72.88%
+Training...
+Done Ttraining
+~~~~~~~~~~~ hidden nodes  =  4 , lambda =  60 ~~~~~~~~~~~
+Training time:  42.95232963562012  seconds
+
+ Training set Accuracy:79.278%
+
+ Validation set Accuracy:79.06%
+
+ Test set Accuracy:79.38%
+Training...
+Done Ttraining
+~~~~~~~~~~~ hidden nodes  =  8 , lambda =  0 ~~~~~~~~~~~
+Training time:  50.35956144332886  seconds
+
+ Training set Accuracy:87.198%
+
+ Validation set Accuracy:85.84%
+
+ Test set Accuracy:87.35%
+Training...
+Done Ttraining
+~~~~~~~~~~~ hidden nodes  =  8 , lambda =  5 ~~~~~~~~~~~
+Training time:  49.57068967819214  seconds
+
+ Training set Accuracy:84.734%
+
+ Validation set Accuracy:83.55%
+
+ Test set Accuracy:84.61%
+Training...
+Done Ttraining
+~~~~~~~~~~~ hidden nodes  =  8 , lambda =  10 ~~~~~~~~~~~
+Training time:  50.36454749107361  seconds
+
+ Training set Accuracy:90.142%
+
+ Validation set Accuracy:89.1%
+
+ Test set Accuracy:89.6%
+Training...
+Done Ttraining
+~~~~~~~~~~~ hidden nodes  =  8 , lambda =  15 ~~~~~~~~~~~
+Training time:  51.19342541694641  seconds
+
+ Training set Accuracy:90.28%
+
+ Validation set Accuracy:89.24%
+
+ Test set Accuracy:90.11%
+Training...
+Done Ttraining
+~~~~~~~~~~~ hidden nodes  =  8 , lambda =  20 ~~~~~~~~~~~
+Training time:  49.68510699272156  seconds
+
+ Training set Accuracy:89.472%
+
+ Validation set Accuracy:88.35%
+
+ Test set Accuracy:89.36%
+Training...
+Done Ttraining
+~~~~~~~~~~~ hidden nodes  =  8 , lambda =  25 ~~~~~~~~~~~
+Training time:  50.54091286659241  seconds
+
+ Training set Accuracy:89.586%
+
+ Validation set Accuracy:88.61%
+
+ Test set Accuracy:89.75%
+Training...
+Done Ttraining
+~~~~~~~~~~~ hidden nodes  =  8 , lambda =  30 ~~~~~~~~~~~
+Training time:  43.563178062438965  seconds
+
+ Training set Accuracy:85.052%
+
+ Validation set Accuracy:83.97%
+
+ Test set Accuracy:84.64%
+Training...
+Done Ttraining
+~~~~~~~~~~~ hidden nodes  =  8 , lambda =  35 ~~~~~~~~~~~
+Training time:  45.04518723487854  seconds
+
+ Training set Accuracy:87.39%
+
+ Validation set Accuracy:86.81%
+
+ Test set Accuracy:87.31%
+Training...
+Done Ttraining
+~~~~~~~~~~~ hidden nodes  =  8 , lambda =  40 ~~~~~~~~~~~
+Training time:  49.599549531936646  seconds
+
+ Training set Accuracy:89.986%
+
+ Validation set Accuracy:89.23%
+
+ Test set Accuracy:89.74%
+Training...
+Done Ttraining
+~~~~~~~~~~~ hidden nodes  =  8 , lambda =  45 ~~~~~~~~~~~
+Training time:  48.97297668457031  seconds
+
+ Training set Accuracy:86.776%
+
+ Validation set Accuracy:85.64%
+
+ Test set Accuracy:86.96%
+Training...
+Done Ttraining
+~~~~~~~~~~~ hidden nodes  =  8 , lambda =  50 ~~~~~~~~~~~
+Training time:  49.37150025367737  seconds
+
+ Training set Accuracy:90.542%
+
+ Validation set Accuracy:89.61%
+
+ Test set Accuracy:90.7%
+Training...
+Done Ttraining
+~~~~~~~~~~~ hidden nodes  =  8 , lambda =  55 ~~~~~~~~~~~
+Training time:  50.77592396736145  seconds
+
+ Training set Accuracy:89.888%
+
+ Validation set Accuracy:89.09%
+
+ Test set Accuracy:89.99%
+Training...
+Done Ttraining
+~~~~~~~~~~~ hidden nodes  =  8 , lambda =  60 ~~~~~~~~~~~
+Training time:  49.22596549987793  seconds
+
+ Training set Accuracy:89.334%
+
+ Validation set Accuracy:88.58%
+
+ Test set Accuracy:89.51%
+Training...
+Done Ttraining
+~~~~~~~~~~~ hidden nodes  =  12 , lambda =  0 ~~~~~~~~~~~
+Training time:  52.259441614151  seconds
+
+ Training set Accuracy:91.656%
+
+ Validation set Accuracy:90.41%
+
+ Test set Accuracy:91.28%
+Training...
+Done Ttraining
+~~~~~~~~~~~ hidden nodes  =  12 , lambda =  5 ~~~~~~~~~~~
+Training time:  55.80294919013977  seconds
+
+ Training set Accuracy:90.978%
+
+ Validation set Accuracy:90.19%
+
+ Test set Accuracy:90.89%
+Training...
+Done Ttraining
+~~~~~~~~~~~ hidden nodes  =  12 , lambda =  10 ~~~~~~~~~~~
+Training time:  55.36243176460266  seconds
+
+ Training set Accuracy:92.26%
+
+ Validation set Accuracy:91.13%
+
+ Test set Accuracy:92.05%
+Training...
+Done Ttraining
+~~~~~~~~~~~ hidden nodes  =  12 , lambda =  15 ~~~~~~~~~~~
+Training time:  53.86348581314087  seconds
+
+ Training set Accuracy:92.498%
+
+ Validation set Accuracy:91.7%
+
+ Test set Accuracy:91.77%
+Training...
+Done Ttraining
+~~~~~~~~~~~ hidden nodes  =  12 , lambda =  20 ~~~~~~~~~~~
+Training time:  54.15541863441467  seconds
+
+ Training set Accuracy:92.036%
+
+ Validation set Accuracy:91.31%
+
+ Test set Accuracy:91.82%
+Training...
+Done Ttraining
+~~~~~~~~~~~ hidden nodes  =  12 , lambda =  25 ~~~~~~~~~~~
+Training time:  55.23727202415466  seconds
+
+ Training set Accuracy:92.142%
+
+ Validation set Accuracy:91.53%
+
+ Test set Accuracy:91.86%
+Training...
+Done Ttraining
+~~~~~~~~~~~ hidden nodes  =  12 , lambda =  30 ~~~~~~~~~~~
+Training time:  53.1740026473999  seconds
+
+ Training set Accuracy:91.528%
+
+ Validation set Accuracy:90.28%
+
+ Test set Accuracy:91.28%
+Training...
+Done Ttraining
+~~~~~~~~~~~ hidden nodes  =  12 , lambda =  35 ~~~~~~~~~~~
+Training time:  53.026456117630005  seconds
+
+ Training set Accuracy:92.364%
+
+ Validation set Accuracy:91.47%
+
+ Test set Accuracy:92.15%
+Training...
+Done Ttraining
+~~~~~~~~~~~ hidden nodes  =  12 , lambda =  40 ~~~~~~~~~~~
+Training time:  52.690021991729736  seconds
+
+ Training set Accuracy:91.656%
+
+ Validation set Accuracy:90.75%
+
+ Test set Accuracy:91.68%
+Training...
+Done Ttraining
+~~~~~~~~~~~ hidden nodes  =  12 , lambda =  45 ~~~~~~~~~~~
+Training time:  54.24696350097656  seconds
+
+ Training set Accuracy:91.746%
+
+ Validation set Accuracy:91.11%
+
+ Test set Accuracy:91.85%
+Training...
+Done Ttraining
+~~~~~~~~~~~ hidden nodes  =  12 , lambda =  50 ~~~~~~~~~~~
+Training time:  52.41860604286194  seconds
+
+ Training set Accuracy:91.63%
+
+ Validation set Accuracy:91.21%
+
+ Test set Accuracy:91.58%
+Training...
+Done Ttraining
+~~~~~~~~~~~ hidden nodes  =  12 , lambda =  55 ~~~~~~~~~~~
+Training time:  52.457188844680786  seconds
+
+ Training set Accuracy:91.724%
+
+ Validation set Accuracy:90.98%
+
+ Test set Accuracy:91.62%
+Training...
+Done Ttraining
+~~~~~~~~~~~ hidden nodes  =  12 , lambda =  60 ~~~~~~~~~~~
+Training time:  53.08595275878906  seconds
+
+ Training set Accuracy:91.866%
+
+ Validation set Accuracy:91.17%
+
+ Test set Accuracy:91.95%
+Training...
+Done Ttraining
+~~~~~~~~~~~ hidden nodes  =  16 , lambda =  0 ~~~~~~~~~~~
+Training time:  59.735426902770996  seconds
+
+ Training set Accuracy:93.16%
+
+ Validation set Accuracy:92.02%
+
+ Test set Accuracy:92.72%
+Training...
+Done Ttraining
+~~~~~~~~~~~ hidden nodes  =  16 , lambda =  5 ~~~~~~~~~~~
+Training time:  56.58644700050354  seconds
+
+ Training set Accuracy:93.024%
+
+ Validation set Accuracy:92.15%
+
+ Test set Accuracy:92.37%
+Training...
+Done Ttraining
+~~~~~~~~~~~ hidden nodes  =  16 , lambda =  10 ~~~~~~~~~~~
+Training time:  57.29188132286072  seconds
+
+ Training set Accuracy:93.006%
+
+ Validation set Accuracy:91.95%
+
+ Test set Accuracy:92.73%
+Training...
+Done Ttraining
+~~~~~~~~~~~ hidden nodes  =  16 , lambda =  15 ~~~~~~~~~~~
+Training time:  57.90510678291321  seconds
+
+ Training set Accuracy:92.68%
+
+ Validation set Accuracy:91.72%
+
+ Test set Accuracy:92.27%
+Training...
+Done Ttraining
+~~~~~~~~~~~ hidden nodes  =  16 , lambda =  20 ~~~~~~~~~~~
+Training time:  60.18401741981506  seconds
+
+ Training set Accuracy:93.096%
+
+ Validation set Accuracy:92.12%
+
+ Test set Accuracy:92.93%
+Training...
+Done Ttraining
+~~~~~~~~~~~ hidden nodes  =  16 , lambda =  25 ~~~~~~~~~~~
+Training time:  56.8557448387146  seconds
+
+ Training set Accuracy:93.146%
+
+ Validation set Accuracy:92.28%
+
+ Test set Accuracy:92.96%
+Training...
+Done Ttraining
+~~~~~~~~~~~ hidden nodes  =  16 , lambda =  30 ~~~~~~~~~~~
+Training time:  57.308804988861084  seconds
+
+ Training set Accuracy:92.504%
+
+ Validation set Accuracy:91.88%
+
+ Test set Accuracy:92.56%
+Training...
+Done Ttraining
+~~~~~~~~~~~ hidden nodes  =  16 , lambda =  35 ~~~~~~~~~~~
+Training time:  56.40134000778198  seconds
+
+ Training set Accuracy:92.768%
+
+ Validation set Accuracy:92.15%
+
+ Test set Accuracy:92.52%
+Training...
+Done Ttraining
+~~~~~~~~~~~ hidden nodes  =  16 , lambda =  40 ~~~~~~~~~~~
+Training time:  60.26118493080139  seconds
+
+ Training set Accuracy:92.718%
+
+ Validation set Accuracy:91.95%
+
+ Test set Accuracy:92.46%
+Training...
+Done Ttraining
+~~~~~~~~~~~ hidden nodes  =  16 , lambda =  45 ~~~~~~~~~~~
+Training time:  58.01684927940369  seconds
+
+ Training set Accuracy:92.742%
+
+ Validation set Accuracy:92.02%
+
+ Test set Accuracy:92.8%
+Training...
+Done Ttraining
+~~~~~~~~~~~ hidden nodes  =  16 , lambda =  50 ~~~~~~~~~~~
+Training time:  57.52748250961304  seconds
+
+ Training set Accuracy:92.512%
+
+ Validation set Accuracy:91.78%
+
+ Test set Accuracy:92.3%
+Training...
+Done Ttraining
+~~~~~~~~~~~ hidden nodes  =  16 , lambda =  55 ~~~~~~~~~~~
+Training time:  56.17243957519531  seconds
+
+ Training set Accuracy:92.196%
+
+ Validation set Accuracy:91.33%
+
+ Test set Accuracy:91.97%
+Training...
+Done Ttraining
+~~~~~~~~~~~ hidden nodes  =  16 , lambda =  60 ~~~~~~~~~~~
+Training time:  56.94156742095947  seconds
+
+ Training set Accuracy:91.656%
+
+ Validation set Accuracy:91.07%
+
+ Test set Accuracy:91.38%
+Training...
+Done Ttraining
+~~~~~~~~~~~ hidden nodes  =  20 , lambda =  0 ~~~~~~~~~~~
+Training time:  62.86864233016968  seconds
+
+ Training set Accuracy:92.82%
+
+ Validation set Accuracy:92.05%
+
+ Test set Accuracy:92.62%
+Training...
+Done Ttraining
+~~~~~~~~~~~ hidden nodes  =  20 , lambda =  5 ~~~~~~~~~~~
+Training time:  62.99794125556946  seconds
+
+ Training set Accuracy:93.344%
+
+ Validation set Accuracy:92.31%
+
+ Test set Accuracy:92.94%
+Training...
+Done Ttraining
+~~~~~~~~~~~ hidden nodes  =  20 , lambda =  10 ~~~~~~~~~~~
+Training time:  64.67275977134705  seconds
+
+ Training set Accuracy:93.11%
+
+ Validation set Accuracy:92.35%
+
+ Test set Accuracy:92.77%
+Training...
+Done Ttraining
+~~~~~~~~~~~ hidden nodes  =  20 , lambda =  15 ~~~~~~~~~~~
+Training time:  61.45001769065857  seconds
+
+ Training set Accuracy:92.81%
+
+ Validation set Accuracy:91.84%
+
+ Test set Accuracy:92.41%
+Training...
+Done Ttraining
+~~~~~~~~~~~ hidden nodes  =  20 , lambda =  20 ~~~~~~~~~~~
+Training time:  60.46089172363281  seconds
+
+ Training set Accuracy:93.22%
+
+ Validation set Accuracy:92.52%
+
+ Test set Accuracy:93.04%
+Training...
+Done Ttraining
+~~~~~~~~~~~ hidden nodes  =  20 , lambda =  25 ~~~~~~~~~~~
+Training time:  60.35204005241394  seconds
+
+ Training set Accuracy:93.518%
+
+ Validation set Accuracy:92.9%
+
+ Test set Accuracy:93.26%
+Training...
+Done Ttraining
+~~~~~~~~~~~ hidden nodes  =  20 , lambda =  30 ~~~~~~~~~~~
+Training time:  61.86755681037903  seconds
+
+ Training set Accuracy:93.506%
+
+ Validation set Accuracy:92.96%
+
+ Test set Accuracy:93.2%
+Training...
+Done Ttraining
+~~~~~~~~~~~ hidden nodes  =  20 , lambda =  35 ~~~~~~~~~~~
+Training time:  61.095391511917114  seconds
+
+ Training set Accuracy:92.756%
+
+ Validation set Accuracy:91.91%
+
+ Test set Accuracy:92.54%
+Training...
+Done Ttraining
+~~~~~~~~~~~ hidden nodes  =  20 , lambda =  40 ~~~~~~~~~~~
+Training time:  61.72570180892944  seconds
+
+ Training set Accuracy:93.302%
+
+ Validation set Accuracy:92.64%
+
+ Test set Accuracy:92.92%
+Training...
+Done Ttraining
+~~~~~~~~~~~ hidden nodes  =  20 , lambda =  45 ~~~~~~~~~~~
+Training time:  60.38307428359985  seconds
+
+ Training set Accuracy:92.45%
+
+ Validation set Accuracy:91.59%
+
+ Test set Accuracy:92.39%
+Training...
+Done Ttraining
+~~~~~~~~~~~ hidden nodes  =  20 , lambda =  50 ~~~~~~~~~~~
+Training time:  60.777979373931885  seconds
+
+ Training set Accuracy:92.856%
+
+ Validation set Accuracy:91.99%
+
+ Test set Accuracy:92.74%
+Training...
+Done Ttraining
+~~~~~~~~~~~ hidden nodes  =  20 , lambda =  55 ~~~~~~~~~~~
+Training time:  60.17227244377136  seconds
+
+ Training set Accuracy:92.632%
+
+ Validation set Accuracy:92.06%
+
+ Test set Accuracy:92.4%
+Training...
+Done Ttraining
+~~~~~~~~~~~ hidden nodes  =  20 , lambda =  60 ~~~~~~~~~~~
+Training time:  61.31312441825867  seconds
+
+ Training set Accuracy:92.936%
+
+ Validation set Accuracy:92.09%
+
+ Test set Accuracy:92.8%

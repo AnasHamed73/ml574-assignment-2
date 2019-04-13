@@ -255,7 +255,7 @@ def optimize(num_iterations):
 # Split the test-set into smaller batches of this size.
 test_batch_size = 256
 
-def plot_images(images, cls_true, cls_pred=None):
+def plot_images(iterations, images, cls_true, cls_pred=None):
     assert len(images) == len(cls_true) == 9
     
     # Create figure with 3x3 sub-plots.
@@ -281,9 +281,10 @@ def plot_images(images, cls_true, cls_pred=None):
     
     # Ensure the plot is shown correctly with multiple plots
     # in a single Notebook cell.
-    plt.show()
+    #plt.show()
+    plt.savefig("error_examples_" + str(iterations) + ".png")
 
-def plot_example_errors(cls_pred, correct):
+def plot_example_errors(iterations, cls_pred, correct):
     # This function is called from print_test_accuracy() below.
 
     # cls_pred is an array of the predicted class-number for
@@ -306,11 +307,12 @@ def plot_example_errors(cls_pred, correct):
     cls_true = data.test.cls[incorrect]
     
     # Plot the first 9 images.
-    plot_images(images=images[0:9],
+    plot_images(iterations,
+                images=images[0:9],
                 cls_true=cls_true[0:9],
                 cls_pred=cls_pred[0:9])
     
-def plot_confusion_matrix(cls_pred):
+def plot_confusion_matrix(iterations, cls_pred):
     # This is called from print_test_accuracy() below.
 
     # cls_pred is an array of the predicted class-number for
@@ -339,9 +341,10 @@ def plot_confusion_matrix(cls_pred):
 
     # Ensure the plot is shown correctly with multiple plots
     # in a single Notebook cell.
-    plt.show()
+    #plt.show()
+    plt.savefig("confusion_matrix_" + str(iterations) + ".png")
 
-def print_test_accuracy(show_example_errors=False,
+def print_test_accuracy(iterations, show_example_errors=False,
                         show_confusion_matrix=False):
 
     # Number of images in the test-set.
@@ -400,22 +403,22 @@ def print_test_accuracy(show_example_errors=False,
     # Plot some examples of mis-classifications, if desired.
     if show_example_errors:
         print("Example errors:")
-        plot_example_errors(cls_pred=cls_pred, correct=correct)
+        plot_example_errors(iterations, cls_pred=cls_pred, correct=correct)
 
     # Plot the confusion matrix, if desired.
     if show_confusion_matrix:
         print("Confusion Matrix:")
-        plot_confusion_matrix(cls_pred=cls_pred)
+        plot_confusion_matrix(iterations, cls_pred=cls_pred)
 
-print_test_accuracy()
+print_test_accuracy(0, False, False)
 optimize(num_iterations=1)
-print_test_accuracy()
+print_test_accuracy(1, True, True)
 optimize(num_iterations=99) # We already performed 1 iteration above.
-print_test_accuracy(show_example_errors=False)
+print_test_accuracy(99, True, True)
 optimize(num_iterations=900) # We performed 100 iterations above.
-print_test_accuracy(show_example_errors=False)
+print_test_accuracy(900, True, True)
 optimize(num_iterations=9000)
-print_test_accuracy(show_example_errors=False)
+print_test_accuracy(9000, True, True)
 session.close()
 
 
