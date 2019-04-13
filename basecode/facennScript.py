@@ -4,10 +4,10 @@ Comparing single layer MLP with deep MLP (using TensorFlow)
 
 import numpy as np
 import pickle
+import numpy as np
+from scipy.optimize import minimize
+from scipy.io import loadmat
 from math import sqrt
-from math import exp
-from scipy import optimize
-
 
 # Do not change this
 def initializeWeights(n_in,n_out):
@@ -26,101 +26,83 @@ def initializeWeights(n_in,n_out):
     return W
 
 
+
 # Replace this with your sigmoid implementation
 def sigmoid(z):
-    return activition # your code here
     return 1/(1+np.exp(-1*z))  # your code here
-
-
+    
+    
 # Replace this with your nnObjFunction implementation
 def nnObjFunction(params, *args):
     n_input, n_hidden, n_class, training_data, training_label, lambdaval = args
-    
+
     label_matrix = []
     for label in training_label:
         label_matrix.append([0 if x != label else 1 for x in range(2)])
     label_matrix = np.array(label_matrix)
 
-
     w1 = params[0:n_hidden * (n_input + 1)].reshape((n_hidden, (n_input + 1)))
     w2 = params[(n_hidden * (n_input + 1)):].reshape((n_class, (n_hidden + 1)))
     obj_val = 0
-    
+
     # Feedforward Propagation
-    bias_1 = np.ones((training_data.shape[0],1))
+    bias_1 = np.ones((training_data.shape[0], 1))
     training_data_with_bias = np.concatenate((training_data, bias_1), axis=1)
-    hidden_output = sigmoid(np.dot(training_data_with_bias,w1.T))
-    bias_2 = np.ones((1,hidden_output.T.shape[1]))
-    hidden_output_with_bias = np.concatenate((hidden_output.T,bias_2), axis=0).T
-    Feedforward_output = sigmoid(np.dot(hidden_output_with_bias,w2.T))
-    
-    #obj_val
-    n = training_data.shape[0]
-    k = Feedforward_output.shape[1]
-    
-    
-    ff = (np.log(Feedforward_output)).T
-    gg = (np.log(1 - Feedforward_output)).T
-    J_sum = np.array(-(np.dot(label_matrix, ff) + np.dot((1 - label_matrix), gg)))
-    diagonal = np.zeros((np.shape(J_sum)[0], 1))
-    for i in range(np.shape(J_sum)[0]):
-        diagonal[i][0] = J_sum[i][i]
-    J_w1_w2 = np.mean(diagonal, axis=0)
+    hidden_output = sigmoid(np.dot(training_data_with_bias, w1.T))
 
-    regularization_term = np.dot(lambdaval,(np.dot(w1.flatten(),w1.flatten().T)+np.dot(w2.flatten(),w2.flatten().T)))
-    obj_val = J_w1_w2.flatten() + regularization_term/np.dot(2,training_data.shape[0])
+    bias_2 = np.ones((1, hidden_output.T.shape[1]))
+    hidden_output_with_bias = np.concatenate((hidden_output.T, bias_2), axis=0).T
+    Feedforward_output = sigmoid(np.dot(hidden_output_with_bias, w2.T))
 
-    #Backpropagation
-    delta_l = np.array(label_matrix - Feedforward_output)
-    derivative_lj = -1*np.dot(delta_l.T, hidden_output_with_bias)
-    gradient_w2 = (derivative_lj + np.dot(lambdaval, w2))/training_data.shape[0]
-    w2_without_bias = w2[:,0:-1]
-    delta_j = np.array(hidden_output)*np.array(1-hidden_output)
-    derivative_ji = -1*np.dot((np.array(delta_j)*np.array(np.dot(delta_l,w2_without_bias))).T,training_data_with_bias)
-    gradient_w1 = (derivative_ji+np.dot(lambdaval,w1))/training_data.shape[0]
-    
-    #Reshape the gradient to a 1D array
-    gradient_w1_reshape = np.ndarray.flatten(gradient_w1.reshape((gradient_w1.shape[0]*gradient_w1.shape[1],1)))
-    gradient_w2_reshape = gradient_w2.flatten()
-    obj_grad_temp = np.concatenate((gradient_w1_reshape.flatten(),gradient_w2_reshape.flatten()),0)
+    # obj_val
+
+    # ff = (np.log(Feedforward_output)).T
+    # gg = (np.log(1 - Feedforward_output)).T
+    # J_sum = np.array(-(np.dot(label_matrix, ff) + np.dot((1 - label_matrix), gg)))
+
+    # diagonal = np.zeros((np.shape(J_sum)[0], 1))
+    # for i in range(np.shape(J_sum)[0]):
+    #    diagonal[i][0] = J_sum[i][i]
+    # J_w1_w2 = np.mean(diagonal, axis=0)
+    A = np.ones((np.shape(label_matrix)[0], 2))
+    Item_1 = np.multiply(label_matrix, np.log(Feedforward_output))
+    Item_2 = np.multiply(A - label_matrix, np.log(A - Feedforward_output))
+    M = Item_1 + Item_2
+    J_w1_w2 = (-1 * np.sum(np.sum(M, axis=0)))/training_data.shape[0]
+
+    w1_squared = np.dot(w1.flatten(), w1.flatten().T)
+    w2_squared = np.dot(w2.flatten(), w2.flatten().T)
+    regularization_term = np.dot(lambdaval, (w1_squared + w2_squared))
+    obj_val = J_w1_w2.flatten() + regularization_term / np.dot(2, training_data.shape[0])
+
+    # Error function and Backpropagation
+    delta_l = np.array(label_matrix - Feedforward_output) # correspondes to eqn(9)
+    dev_lj = -1*np.dot(delta_l.T, hidden_output_with_bias) # correspondes to eqn(8)
+    grad_w2 = (dev_lj + lambdaval *w2)/ training_data.shape[0] #correspondes to eqn(16)
+    w2_noBias = w2[:,0:-1]
+    delta_j = np.array(hidden_output)*np.array(1-hidden_output) # correspondes to -(1-Zj)Zj in eqn(12)
+    dev_ji = -1*np.dot((np.array(delta_j)*np.array(np.dot(delta_l,w2_noBias))).T,training_data_with_bias) # correspondes to eqn(12)
+    grad_w1 = (dev_ji+lambdaval*w1)/training_data.shape[0] #correnspondes to eqn(17)
+
+    # Reshape the gradient matrices to a 1D array.
+    grad_w1_reshape = np.ndarray.flatten(grad_w1.reshape((grad_w1.shape[0]*grad_w1.shape[1],1)))
+    grad_w2_reshape = grad_w2.flatten()
+    obj_grad_temp = np.concatenate((grad_w1_reshape.flatten(), grad_w2_reshape.flatten()),0)
     obj_grad = np.ndarray.flatten(obj_grad_temp)
-    
-    
-    # Make sure you reshape the gradient matrices to a 1D array. for instance if your gradient matrices are grad_w1 and grad_w2
-    # you would use code similar to the one below to create a flat array
-    # obj_grad = np.concatenate((grad_w1.flatten(), grad_w2.flatten()),0)
-    #obj_grad = np.array([])
-    #print(obj_val, obj_grad)
-    
-    return (obj_val, obj_grad)
+    return (obj_val,obj_grad)
 
 
-    
 # Replace this with your nnPredict implementation
 def nnPredict(w1,w2,data):
-    labels = np.array([])
-    # Your code here
-    # print("Data shape: ", data.shape)
-    # print("w1 shape: ", w1.shape)
-    # print("w2 shape: ", w2.shape)
-    
-    ones_input = np.ones((np.shape(data)[0], 1))
-    data = np.concatenate([ones_input, data], axis=1)
-    a = sigmoid(np.dot(data, np.transpose(w1)))
-    
-    ones_hidden = np.ones((np.shape(a)[0], 1))
-    a = np.concatenate([ones_hidden, a], axis=1)
-    labels = sigmoid(np.dot(a, np.transpose(w2)))
-    
-    preds = np.zeros((np.shape(data)[0], 1))
-    for i in range(np.shape(data)[0]):
-        max = 0
-        for j in range(np.shape(labels)[1]):
-            if labels[i][j] > labels[i][max]:
-                max = j
-        preds[i] = max
-    
-    return preds
+    input_bias = np.ones((data.shape[0],1))  # create a bias
+    data_bias = np.concatenate((data, input_bias), axis=1)  # add bias to training data
+    hiden_out = sigmoid(np.dot(data_bias, w1.T))  # 3.32 equtions 1 and 2
+    hiden_bias = np.ones((1,hiden_out.T.shape[1]))  # create a bias
+    hiden_out_bias = np.concatenate((hiden_out.T, hiden_bias), axis=0).T  # add bias to hidden_out data
+    net_out = sigmoid(np.dot(hiden_out_bias,w2.T))  # 3.32 eqution 3 and 4, feed forward is complete.
+    # Make a 1D vector of the predictions.
+    return net_out.argmax(axis=1)
+
 
 
 # Do not change this
@@ -158,9 +140,9 @@ lambdaval = 10;
 args = (n_input, n_hidden, n_class, train_data, train_label, lambdaval)
 
 #Train Neural Network using fmin_cg or minimize from scipy,optimize module. Check documentation for a working example
-opts = {'maxiter': 50}    # Preferred value.
+opts = {'maxiter' :50}    # Preferred value.
 
-nn_params = optimize.minimize(nnObjFunction, initialWeights, jac=True, args=args, method='CG', options=opts)
+nn_params = minimize(nnObjFunction, initialWeights, jac=True, args=args,method='CG', options=opts)
 params = nn_params.get('x')
 #Reshape nnParams from 1D vector into w1 and w2 matrices
 w1 = params[0:n_hidden * (n_input + 1)].reshape( (n_hidden, (n_input + 1)))
