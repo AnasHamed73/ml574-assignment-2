@@ -1,3 +1,0 @@
-alias apple='ssh ubitname@springsteen.cse.buffalo.edu'
-
-alias banana' _f(){ scp -r $1 ubitname@springsteen.cse.buffalo.edu:/home/csgrad/ubitname; }; _f '
